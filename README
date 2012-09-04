@@ -2,7 +2,7 @@ NAME
     Cocoa::BatteryInfo - Getting battery informations on your Mac
 
 SYNOPSIS
-    Get battery infomartions
+    Get battery informations
 
         use Cocoa::BatteryInfo;
     

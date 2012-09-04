@@ -59,6 +59,8 @@ makemaker_args->{dynamic_lib} = {
 };
 
 {
+    no warnings 'redefine';
+
     # http://www.mail-archive.com/makemaker@perl.org/msg02823.html
     # Add some required machinery to support .m files
     package MY;
