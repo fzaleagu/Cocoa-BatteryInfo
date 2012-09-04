@@ -23,7 +23,7 @@ Cocoa::BatteryInfo - Getting battery informations on your Mac
 
 =head1 SYNOPSIS
 
-Get battery infomartions
+Get battery informations
 
     use Cocoa::BatteryInfo;
     

@@ -40,6 +40,14 @@ SYNOPSIS
         Cocoa::EventLoop->run;
 
 DESCRIPTION
+    This module provides several functions to get battery information about
+    your Mac computers. Optionally this module also supports some
+    notifications (low battery notifications, time remaining change
+    notifications) with Cocoa::EventLoop.
+
+    This module requires Mac OS X 10.7 or later because it depends new IOKit
+    APIs.
+
 CLASS METHODS
   info($source_name : Str)
         my $info = Cocoa::BatteryInfo->info;
@@ -48,7 +56,8 @@ CLASS METHODS
 
     Returns readable information about the specific power source.
 
-    If $source_name is not set, returns first source information.
+    If $source_name is not set, returns first source information. If system
+    doesn't have any battery, returns nothing.
 
   sources()
         my @sources = Cocoa::BatteryInfo->sources;
@@ -68,11 +77,14 @@ CLASS METHODS
 
     $level is one of following levels:
 
-    *   Cocoa::BatteryInfo::LowBatteryWarningNone (No battery warnings)
+    *   Cocoa::BatteryInfo::LowBatteryWarningNone (== 0) (No battery
+        warnings)
 
-    *   Cocoa::BatteryInfo::LowBatteryWarningEarly (Early battery warnings)
+    *   Cocoa::BatteryInfo::LowBatteryWarningEarly (== 1) (Early battery
+        warnings)
 
-    *   Cocoa::BatteryInfo::LowBatteryWarningFinal (Final battery warnings)
+    *   Cocoa::BatteryInfo::LowBatteryWarningFinal (== 2) (Final battery
+        warnings)
 
 CALLBACKS
   low_battery_handler($callback :CodeRef)
@@ -100,4 +112,13 @@ NOTICE
 
 AUTHOR
     Daisuke Murase <typester@cpan.org>
+
+COPYRIGHT AND LICENSE
+    Copyright (c) 2012 Daisuke Murase. All rights reserved.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
+    The full text of the license can be found in the LICENSE file included
+    with this module.
 
